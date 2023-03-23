@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tes</title>
+</head>
+
+    <style>
+        button {
+            display: flex;
+            margin: auto;
+            padding:0.5rem 1rem;
+            border: none;
+            background-color: tomato;
+            border-radius: 1rem;
+        }
+
+        .active {
+            color: blue;
+        }
+
+    </style>
+<body>
+    <br>
+    <h2 style="text-align: center;">Hello world</h2>
+    <button>Button</button>
+
+    <script>
+        const h2 = document.querySelector('h2');
+        const btn = document.querySelector('button').addEventListener('click',function(){
+            h2.classList.toggle('active');
+            h2.style.transition = '0.5s';
+        });
+    </script>
+</body>
+
+</html>
