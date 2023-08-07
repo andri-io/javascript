@@ -27,7 +27,6 @@
 //     }
 // }
 
-
 // const dev = new Developer('Andri');
 // dev.commitChanger();
 // const frontEnd = new FrontEndDeveloper ('Risma Maya Sari');
@@ -37,48 +36,91 @@
 // const devOps = new DevOpsDeveloper ('Zet Erlangga');
 // devOps.deployApp();
 
-
-
 // ===== CARA YANG LEBIH EFEKTIF !!! =====
- class Developer {
-    constructor(name){
-        this.name = name;
-    }
 
-    commitChanger(){
-        console.log(`${this.name} Is Commit Changges ...`)
-    }
- }
+class WebDev {
+  constructor(name) {
+    this.name = name;
+  }
 
- function canBuildUi(Developer){
-    return {
-        buildUi : () => {
-            console.log(`${Developer.name} Is Building Ui ...`);
-        }
-    }
- }
-
- function canBuildApi(Developer){
-    return {
-        buildApi : () =>{
-            console.log(`${Developer.name} Is Building Api ...`);
-        }
-    }
- }
-
- function canDeployApp(Developer){
-    return{
-        deployApp : () =>{
-            console.log(`${Developer.name} Is Deploying App ...`);
-        }
-    }
- }
-
-function createFrontendDeveloper(name){
-    const developer = new Developer(name);
-    return Object.assign(developer, canBuildUi(developer));
+  commitChanges() {
+    console.log(`${this.name} Commiting Changes`);
+  }
 }
 
-// function createBackendDeveloper(name){
-//     const developer = new 
-// }
+function canBuildUi(webDev) {
+  return {
+    buildUi: () => {
+      console.log(`${webDev.name} Is Building Ui`);
+    }
+  }
+}
+
+function canBuildApi(webDev) {
+  return {
+    buildApi: () => {
+      console.log(`${webDev.name} Is Building Api`);
+    }
+  }
+}
+
+function canDeployApp(webDev) {
+  return {
+    deployApp: () => {
+      console.log(`${webDev.name} Is Deploying App`);
+    }
+  }
+}
+function createFrontEndDeveloper(name) {
+  const developer = new WebDev(name);
+  return Object.assign(developer, canBuildUi(developer));
+}
+
+function createBackendDeveloper(name) {
+  const developer = new WebDev(name);
+  return Object.assign(developer, canBuildApi(developer));
+}
+
+function createDevOpsDeveloper(name) {
+  const developer = new WebDev(name);
+  return Object.assign(developer, canDeployApp(developer));
+}
+
+function createFullStackDeveloper(name) {
+  const developer = new WebDev(name);
+  return Object.assign(
+    developer,
+    canBuildUi(developer),
+    canBuildApi(developer),
+    canDeployApp(developer)
+  );
+}
+
+const frontEndDeveloper = createFrontEndDeveloper("Andri");
+frontEndDeveloper.buildUi();
+frontEndDeveloper.commitChanges();
+console.log(
+  `${frontEndDeveloper.name} Is developer ?`,
+  frontEndDeveloper instanceof WebDev
+);
+
+const backenDeveloper = createBackendDeveloper("Risma");
+backenDeveloper.buildApi();
+console.log(
+  `${backenDeveloper.name} Is developer ?`,
+  backenDeveloper instanceof WebDev
+);
+
+const devOpsDeveloper = createDevOpsDeveloper("Eos Ageng");
+devOpsDeveloper.deployApp();
+console.log(
+  `${devOpsDeveloper.name} Is developer ?`,
+  devOpsDeveloper instanceof WebDev
+);
+
+const fullStackDeveloper = createFullStackDeveloper('Zet Erlangga');
+fullStackDeveloper.buildApi();
+fullStackDeveloper.buildUi();
+fullStackDeveloper.deployApp();
+
+console.log(`${fullStackDeveloper.name} developer ? `, fullStackDeveloper instanceof WebDev);
