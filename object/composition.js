@@ -1,40 +1,40 @@
-//===== object composition =====
-// class Developer {
-//     constructor(name){
-//         this.name = name;
-//     }
+// ===== object composition =====
+class Developer {
+    constructor(name){
+        this.name = name;
+    }
 
-//     commitChanger(){
-//         console.log(`${this.name} Is Commiting Changes ...`);
-//     }
-// }
+    commitChanger(){
+        console.log(`${this.name} Is Commiting Changes ...`);
+    }
+}
 
-// class FrontEndDeveloper extends Developer{
-//     buildUi(){
-//         console.log(`${this.name} Is Building Ui ...`);
-//     }
-// }
+class FrontEndDeveloper extends Developer{
+    buildUi(){
+        console.log(`${this.name} Is Building Ui ...`);
+    }
+}
 
-// class BackendDeveloper extends Developer{
-//     buildApi(){
-//         console.log(`${this.name} Is Building Api ...`);
-//     }
-// }
+class BackendDeveloper extends Developer{
+    buildApi(){
+        console.log(`${this.name} Is Building Api ...`);
+    }
+}
 
-// class DevOpsDeveloper extends Developer {
-//     deployApp(){
-//         console.log(`${this.name} Is Deploying APP ...`);
-//     }
-// }
+class DevOpsDeveloper extends Developer {
+    deployApp(){
+        console.log(`${this.name} Is Deploying APP ...`);
+    }
+}
 
-// const dev = new Developer('Andri');
-// dev.commitChanger();
-// const frontEnd = new FrontEndDeveloper ('Risma Maya Sari');
-// frontEnd.buildUi();
-// const backend = new BackendDeveloper ('Arif Budiman');
-// backend.buildApi();
-// const devOps = new DevOpsDeveloper ('Zet Erlangga');
-// devOps.deployApp();
+const dev = new Developer('Andri');
+dev.commitChanger();
+const frontEnd = new FrontEndDeveloper ('Risma Maya Sari');
+frontEnd.buildUi();
+const backend = new BackendDeveloper ('Arif Budiman');
+backend.buildApi();
+const devOps = new DevOpsDeveloper ('Zet Erlangga');
+devOps.deployApp();
 
 // ===== CARA YANG LEBIH EFEKTIF !!! =====
 
@@ -52,24 +52,24 @@ function canBuildUi(webDev) {
   return {
     buildUi: () => {
       console.log(`${webDev.name} Is Building Ui`);
-    }
-  }
+    },
+  };
 }
 
 function canBuildApi(webDev) {
   return {
     buildApi: () => {
       console.log(`${webDev.name} Is Building Api`);
-    }
-  }
+    },
+  };
 }
 
 function canDeployApp(webDev) {
   return {
     deployApp: () => {
       console.log(`${webDev.name} Is Deploying App`);
-    }
-  }
+    },
+  };
 }
 function createFrontEndDeveloper(name) {
   const developer = new WebDev(name);
@@ -118,9 +118,30 @@ console.log(
   devOpsDeveloper instanceof WebDev
 );
 
-const fullStackDeveloper = createFullStackDeveloper('Zet Erlangga');
+const fullStackDeveloper = createFullStackDeveloper("Zet Erlangga");
 fullStackDeveloper.buildApi();
 fullStackDeveloper.buildUi();
 fullStackDeveloper.deployApp();
 
-console.log(`${fullStackDeveloper.name} developer ? `, fullStackDeveloper instanceof WebDev);
+console.log(
+  `${fullStackDeveloper.name} developer ? `,
+  fullStackDeveloper instanceof WebDev
+);
+
+// ===== Consotoh 3 =====
+
+
+const penulis = (nama, tahunLahir)=>({nama,tahunLahir,});
+
+const buku = (judul, terbit, penulis)=>({
+    judul,
+    terbit,
+    penulis,
+    info(){
+        console.log(`${this.judul} Oleh ${this.penulis.nama} Terbit Tahun ${this.terbit}`);
+    }
+});
+
+const pengarang = penulis('Agus');
+const novel = buku('Kisah Kita', 2022, pengarang);
+novel.info();
