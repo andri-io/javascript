@@ -60,4 +60,4 @@
 
     const myEagle = new Eagle('Elo', 4, true);
     myEagle.fly();
-    console.log(myEagle);
+    console.log(myEagle.isMamal);

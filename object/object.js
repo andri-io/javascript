@@ -44,6 +44,7 @@ let mahasiswa3 = createObject ('bayhaqi','2110010254','uniska','4G','Teknik info
 
 
 // constructor
+
 function Mahasiswa4 (nama,kelas,npm,jurusan) {
     this.nama = nama;
     this.kelas = kelas;

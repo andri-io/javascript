@@ -39,7 +39,6 @@ class Mahasiswa{
     main (jam){
         this.energi -= jam;
         return `Halo ${this.nama} selamat main`;
-
     }
 }
 
