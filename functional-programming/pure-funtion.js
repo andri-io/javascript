@@ -19,3 +19,17 @@ const hitungLuasLingkaran = (jariJari) =>{
 console.log(`Luas Lingkarang : ${hitungLuasLingkaran(4)}`);
 console.log(`Luas Lingkarang : ${hitungLuasLingkaran(5)}`);
 console.log(`Luas Lingkarang : ${hitungLuasLingkaran(6)}`);
+
+// contoh 2 
+
+const createPersonWithAge = (age, person) => {
+    return {...person, age}
+}
+
+const person = {
+    name : 'Agile'
+};
+
+const newPerson = createPersonWithAge(18, 'andri');
+
+console.log({person, newPerson});
