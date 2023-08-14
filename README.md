@@ -1,7 +1,7 @@
 # sejarah JavaScript
 
 ### Pembuatan
-JavaScript pertama kali diperkenalkan pada bulan Desember 1995 sebagai bagian dari browser Netscape Navigator 2.0. Nama aslinya adalah "Mocha," yang kemudian diganti menjadi "LiveScript" dan akhirnya menjadi "JavaScript" untuk memanfaatkan popularitas bahasa Java.
+JavaScript pertama kali diperkenalkan pada bulan Desember 1995 oleh Brendan Eich programmer dari Netscape, sebagai bagian dari browser Netscape Navigator 2.0. Nama aslinya adalah "Mocha," yang kemudian diganti menjadi "LiveScript" dan akhirnya menjadi "JavaScript" untuk memanfaatkan popularitas bahasa Java.
 
 ### Kerjasama dengan ECMA:
 Pada tahun 1996, JavaScript diserahkan kepada European Computer Manufacturers Association (ECMA) untuk mendefinisikan standar yang lebih resmi. Hasilnya adalah ECMAScript 1, yang merupakan spesifikasi resmi pertama untuk bahasa ini.
