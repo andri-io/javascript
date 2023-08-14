@@ -41,29 +41,75 @@
 //     console.log(`JSON Error : ${error.message}`);     
 // }
 
-const json = '{ "name": "Yoda",  "age": 20  }';
-try{
+// const json = '{ "name": "Yoda",  "age": 20  }';
+// try{
+//     const user = JSON.parse(json);
+
+//     if(!user.name){
+//         console.log("'name' : is required. ");
+//     }
+
+//     console.log(user.name);
+//     console.log(user.age);
+
+// } catch(error) {
+//     if (error instanceof SyntaxError){
+//         console.log(`JSON Error : ${error.message}`);
+//     } else if (error instanceof ReferenceError){
+//         console.log(error.message);
+//     } else {
+//         console.log(error.stack);
+//     }
+// }
+
+
+class ValidationError extends Error{
+    constructor(message){
+        super(message);
+        this.name = 'VallidationError';
+    }
+}
+
+const json = '{"age":20}';
+
+try {
     const user = JSON.parse(json);
 
     if(!user.name){
-        console.log("'name' : is required. ");
+        throw new ValidationError("'name' is required.");
+    }
+
+    if (!user.age){
+        throw new ValidationError("'age' is required");
     }
 
     console.log(user.name);
     console.log(user.age);
-
-} catch(error) {
+} catch(error){
     if (error instanceof SyntaxError){
-        console.log(`JSON Error : ${error.message}`);
-    } else if (error instanceof ReferenceError){
-        console.log(error.message);
-    } else {
+        console.log(`JSON Syntax Error: ${error.message}`);
+    }
+    else if (error instanceof ReferenceError){
+        console.log(`Invalid Data: ${error.message}`);
+    }
+    else {
         console.log(error.stack);
     }
 }
+
+
+
+
+
 // ==== PENJELASAN ====
 
 /*
+message adalah parameter dari constructor ValidationError. Ketika Anda membuat instance objek dari kelas ValidationError, Anda dapat melewatkan pesan kesalahan sebagai argumen saat pembuatan instance. Parameter ini mewakili pesan yang akan ditampilkan ketika objek kesalahan diciptakan.
+
+Error adalah kelas bawaan JavaScript yang digunakan untuk menciptakan objek kesalahan. Dalam konteks extends Error, Anda sedang meng-extend (mewarisi) sifat dan perilaku kelas bawaan Error untuk digunakan dalam kelas yang Anda definisikan sendiri (ValidationError dalam hal ini). Dengan mewarisi dari Error, Anda dapat menggunakan super(message) dalam constructor untuk memanggil constructor dari kelas Error yang mengharapkan pesan kesalahan sebagai argumen.
+
+Dengan cara ini, ketika Anda membuat instance dari ValidationError, Anda dapat meneruskan pesan kesalahan melalui konstruktor. Dalam konstruktor ValidationError, Anda menggunakan super(message) untuk meneruskan pesan ke constructor kelas Error, sehingga menginisialisasi pesan kesalahan dalam instance objek yang dibuat.
+
 Deklarasi JSON dan Blok Try-Catch: Kode dimulai dengan mendeklarasikan variabel json yang berisi string JSON yang akan di-parse. Kemudian, kode berlanjut dengan blok try yang akan menangkap dan mengelola kesalahan yang terjadi dalam blok ini.
 
 JSON Parsing: Di dalam blok try, baris const user = JSON.parse(json); digunakan untuk mem-parsing string JSON ke dalam objek JavaScript. Jika parsing berhasil, objek user akan berisi data yang diambil dari JSON.
